@@ -6,6 +6,13 @@ public class spawner : MonoBehaviour
 {
     public GameObject ZombiePrefab;
     public Transform Target;
+
+    IEnumerator SpawnRow(){
+        while(true){
+            yield return new WaitForSeconds(1);
+            Spawn();
+        }
+    }
     void Spawn()
     {
         GameObject Zombie=Instantiate(ZombiePrefab);
@@ -16,7 +23,7 @@ public class spawner : MonoBehaviour
     }
     void Start()
     {
-        Spawn();
+        StartCoroutine(SpawnRow());
     }
 
     // Update is called once per frame

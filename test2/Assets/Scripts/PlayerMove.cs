@@ -22,5 +22,19 @@ public class PlayerMove : MonoBehaviour
         xRotation=Mathf.Clamp(xRotation,-90,90);
         transform.localRotation=Quaternion.Euler(xRotation,0,0);
         body.Rotate(Vector3.up*mouseX);
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Debug.Log("pow");
+            RaycastHit hit;
+            if(Physics.Raycast(transform.position,transform.forward,out hit))
+            {
+                Debug.Log(hit.transform.name);
+                if(hit.transform.GetComponent<enemy>());
+                {
+                    Debug.Log("-1");
+                    hit.transform.GetComponent<enemy>().Die();
+                }
+            }
+        }
     }
 }

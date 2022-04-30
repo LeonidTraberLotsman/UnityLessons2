@@ -13,7 +13,10 @@ public class enemy : MonoBehaviour
         
     }
 
-    
+    public void Die()
+    {
+        Destroy(this.gameObject);
+    }
     void Update()
     {
         agent.destination=Target.position;
