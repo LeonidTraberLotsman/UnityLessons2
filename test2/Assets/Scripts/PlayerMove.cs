@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour
             if(Physics.Raycast(transform.position,transform.forward,out hit))
             {
                 Debug.Log(hit.transform.name);
-                if(hit.transform.GetComponent<enemy>());
+                if(hit.transform.GetComponent<enemy>())
                 {
                     Debug.Log("-1");
                     hit.transform.GetComponent<enemy>().Die();
