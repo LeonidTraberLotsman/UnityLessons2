@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     float xRotation=0;
     public float MS=0;
     public Transform body;
+    public PlayerBodyMove player;
     void Start()
     {
         
@@ -32,7 +33,15 @@ public class PlayerMove : MonoBehaviour
                 if(hit.transform.GetComponent<enemy>())
                 {
                     Debug.Log("-1");
-                    hit.transform.GetComponent<enemy>().Die();
+                    
+                    if(player.hp>0)
+                    {
+                        hit.transform.GetComponent<enemy>().Die();
+
+                    }
+                    
+                    
+                    
                 }
             }
         }

@@ -12,11 +12,13 @@ public class PlayerBodyMove : MonoBehaviour
     // Start is called before the first frame update
     public float speed=1;
     public float hp=100;
+    public GameObject GO;
 
     void zdixanie()
     {
         hp=0;
         speed=0;
+        GO.SetActive(true);
     }
 
     void Start()

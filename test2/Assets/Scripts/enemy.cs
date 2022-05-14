@@ -7,16 +7,22 @@ public class enemy : MonoBehaviour
 {
     public float zloykvadratikuron=2;
     public Transform Target;
+    
     NavMeshAgent agent;
     void Start()
     {
         agent=GetComponent<NavMeshAgent>();
         
+        
     }
 
     public void Die()
     {
-        Destroy(this.gameObject);
+        
+        
+            Destroy(this.gameObject);
+        
+        
     }
     void Update()
     {
