@@ -1,20 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerMove : MonoBehaviour
 {
-    // Start is called before the first frame update
     float xRotation=0;
     public float MS=0;
     public Transform body;
     public PlayerBodyMove player;
+    public int MaxAmmo;
+    public int CurAmmo;
+    public int BagAmmo;
+    public Text AmmoCaunter;
+    void UpdAmmoCunter()
+    {
+        AmmoCaunter.text=CurAmmo+"/"+BagAmmo;
+    }
+    void Reload()
+    {
+        int Pos=MaxAmmo-CurAmmo;
+        if(BagAmmo>Pos)
+        {
+            BagAmmo-=Pos;
+            CurAmmo+=Pos;
+        }
+        else
+        {
+            CurAmmo+=BagAmmo;
+            BagAmmo=0;
+        }
+        UpdAmmoCunter();
+    }
     void Start()
     {
-        
+        UpdAmmoCunter();
     }
-
-    // Update is called once per frame
     void Update()
     {
         float mouseX=Input.GetAxis("Mouse X")*Time.deltaTime*MS;
@@ -23,7 +45,7 @@ public class PlayerMove : MonoBehaviour
         xRotation=Mathf.Clamp(xRotation,-90,90);
         transform.localRotation=Quaternion.Euler(xRotation,0,0);
         body.Rotate(Vector3.up*mouseX);
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse0) && (CurAmmo>0))
         {
             Debug.Log("pow");
             RaycastHit hit;
@@ -39,11 +61,15 @@ public class PlayerMove : MonoBehaviour
                         hit.transform.GetComponent<enemy>().Die();
 
                     }
-                    
-                    
-                    
                 }
             }
+            CurAmmo=CurAmmo-1;
+            UpdAmmoCunter();
+        }
+        if(Input.GetKeyUp(KeyCode.R))
+        {
+            Debug.Log("gvgvgv");
+            Reload();
         }
     }
 }

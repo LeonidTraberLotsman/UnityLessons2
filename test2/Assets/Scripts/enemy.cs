@@ -30,7 +30,7 @@ public class enemy : MonoBehaviour
        agent.destination=Target.position;
     if(Vector3.Distance(transform.position,Target.position)<2)
     {
-        Debug.Log("axaxa pleyer, nu ti i loshara,uron poluchil,da eshe i pogib axaxaxaxa");
+        Debug.Log("ты умер");
         if(Target.GetComponent<PlayerBodyMove>())
         {
             Target.GetComponent<PlayerBodyMove>().Damage(zloykvadratikuron);
@@ -38,6 +38,5 @@ public class enemy : MonoBehaviour
     }
     }
 }
-//simvoli
-//dadadadadadadadadadadadadadadadadadadadadadaadadadadadadadadadadadadadadadadadadadadadadadadadadadadadadadadadadadaaddadadadaadadadaddadadadadadadadadaaddadadadadadadadadaadaadadadadadaddaadadadadadaaddadaad
+
 
